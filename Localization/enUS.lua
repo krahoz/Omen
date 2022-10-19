@@ -135,6 +135,7 @@ L["ROGUE"] = "Rogue"
 L["SHAMAN"] = "Shaman"
 L["WARLOCK"] = "Warlock"
 L["WARRIOR"] = "Warrior"
+L["HERO"] = "Hero"
 L["*Not in Party*"] = true
 
 -- Config strings, bar settings section

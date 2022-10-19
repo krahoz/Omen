@@ -115,6 +115,7 @@ local defaults = {
 				SHAMAN = true,
 				WARLOCK = true,
 				WARRIOR = true,
+				HERO = true,
 				["*NOTINPARTY*"] = true,
 			},
 			ShowTPS = true,
@@ -219,6 +220,7 @@ local showClassesOptionTable = {
 	SHAMAN = L["SHAMAN"],
 	WARLOCK = L["WARLOCK"],
 	WARRIOR = L["WARRIOR"],
+	HERO = L["HERO"],
 	["*NOTINPARTY*"] = L["*Not in Party*"],
 }
 
