@@ -1673,6 +1673,7 @@ function Omen:UpdateBarsReal()
 			  or myClass == "DRUID" and GetBonusBarOffset() == 3
 			  or myClass == "PALADIN" and UnitAura("player", GetSpellInfo(25780))
 			  or myClass == "DEATHKNIGHT" and GetShapeshiftForm() ~= 0 and GetShapeshiftFormInfo(GetShapeshiftForm()) == "Interface\\Icons\\Spell_Deathknight_FrostPresence") then
+			  or myClass == "HERO" and GetBonusBarOffset() == 3
 				self:Warn(t.Sound, t.Flash, t.Shake, t.Message and L["Passed %s%% of %s's threat!"]:format(t.Threshold, guidNameLookup[lastWarn.tankGUID]))
 			end
 		end
