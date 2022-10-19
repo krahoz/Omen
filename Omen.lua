@@ -1668,12 +1668,18 @@ function Omen:UpdateBarsReal()
 		local myThreatPercent = threatTable[myGUID] / tankThreat * 100
 		local t = db.Warnings
 		if lastWarn.mobGUID == mobGUID and myThreatPercent >= t.Threshold and t.Threshold > lastWarn.threatpercent then
+			local shapeShiftForm = GetShapeshiftForm()
 			if not t.DisableWhileTanking or not (
 			  myClass == "WARRIOR" and GetBonusBarOffset() == 2
 			  or myClass == "DRUID" and GetBonusBarOffset() == 3
-			  or myClass == "PALADIN" and UnitAura("player", GetSpellInfo(25780))
-			  or myClass == "DEATHKNIGHT" and GetShapeshiftForm() ~= 0 and GetShapeshiftFormInfo(GetShapeshiftForm()) == "Interface\\Icons\\Spell_Deathknight_FrostPresence") then
 			  or myClass == "HERO" and GetBonusBarOffset() == 3
+			  or UnitAura("player", GetSpellInfo(25780)) -- Righteous Fury
+			  or UnitAura("player", GetSpellInfo(701463)) -- Mana-forged Barrier
+			  or shapeShiftForm ~= 0 and (
+			    GetShapeshiftFormInfo(shapeShiftForm) == "Interface\\Icons\\Ability_Warrior_DefensiveStance"
+			    or GetShapeshiftFormInfo(shapeShiftForm) == "Interface\\Icons\\Spell_Deathknight_FrostPresence"
+			  ))
+		    then
 				self:Warn(t.Sound, t.Flash, t.Shake, t.Message and L["Passed %s%% of %s's threat!"]:format(t.Threshold, guidNameLookup[lastWarn.tankGUID]))
 			end
 		end
